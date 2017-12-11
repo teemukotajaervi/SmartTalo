@@ -52,6 +52,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -170,6 +172,33 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Database\Sauna.cs">
+      <DependentUpon>ValoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Sijainti.cs">
+      <DependentUpon>ValoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Talo.cs">
+      <DependentUpon>ValoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Valo.cs">
+      <DependentUpon>ValoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ValoModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValoModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ValoModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ValoModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValoModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -182,12 +211,29 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Database\ValoModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ValoModel.edmx</DependentUpon>
+      <LastGenOutput>ValoModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Database\ValoModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ValoModel.edmx</DependentUpon>
+      <LastGenOutput>ValoModel.cs</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Database\ValoModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ValoModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Database\ValoModel.edmx.diagram">
+      <DependentUpon>ValoModel.edmx</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\SmartTalot.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -246,6 +292,9 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

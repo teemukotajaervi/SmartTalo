@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SmartHouseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Sauna">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Koodi" Type="nvarchar" MaxLength="100" />
+          <Property Name="Tyyppi" Type="nvarchar" MaxLength="100" />
+          <Property Name="Tila" Type="nvarchar" MaxLength="100" />
+          <Property Name="Lampotila" Type="int" />
+        </EntityType>
+        <EntityType Name="Sijainti">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Koodi" Type="nvarchar" MaxLength="100" />
+          <Property Name="Nimi" Type="nvarchar" MaxLength="200" />
+          <Property Name="Osoite" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Talo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SijaintiId" Type="int" />
+          <Property Name="ValoId" Type="int" />
+          <Property Name="SaunaId" Type="int" />
+          <Property Name="Tila" Type="nvarchar" MaxLength="100" />
+          <Property Name="Lampotila" Type="int" />
+        </EntityType>
+        <EntityType Name="Valo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Koodi" Type="nvarchar" MaxLength="100" />
+          <Property Name="Tyyppi" Type="nvarchar" MaxLength="100" />
+          <Property Name="Tila" Type="nvarchar" MaxLength="100" />
+          <Property Name="Valonmaara" Type="int" />
+        </EntityType>
+        <Association Name="FK_Talo_Sauna">
+          <End Role="Sauna" Type="Self.Sauna" Multiplicity="0..1" />
+          <End Role="Talo" Type="Self.Talo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sauna">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Talo">
+              <PropertyRef Name="SaunaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Talo_Sijainti">
+          <End Role="Sijainti" Type="Self.Sijainti" Multiplicity="0..1" />
+          <End Role="Talo" Type="Self.Talo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sijainti">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Talo">
+              <PropertyRef Name="SijaintiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Talo_Valo">
+          <End Role="Valo" Type="Self.Valo" Multiplicity="0..1" />
+          <End Role="Talo" Type="Self.Talo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Valo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Talo">
+              <PropertyRef Name="ValoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SmartHouseModelStoreContainer">
+          <EntitySet Name="Sauna" EntityType="Self.Sauna" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sijainti" EntityType="Self.Sijainti" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Talo" EntityType="Self.Talo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Valo" EntityType="Self.Valo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Talo_Sauna" Association="Self.FK_Talo_Sauna">
+            <End Role="Sauna" EntitySet="Sauna" />
+            <End Role="Talo" EntitySet="Talo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Talo_Sijainti" Association="Self.FK_Talo_Sijainti">
+            <End Role="Sijainti" EntitySet="Sijainti" />
+            <End Role="Talo" EntitySet="Talo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Talo_Valo" Association="Self.FK_Talo_Valo">
+            <End Role="Valo" EntitySet="Valo" />
+            <End Role="Talo" EntitySet="Talo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SmartHouseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Sauna">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Koodi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Tyyppi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Tila" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Lampotila" Type="Int32" />
+          <NavigationProperty Name="Talo" Relationship="Self.FK_Talo_Sauna" FromRole="Sauna" ToRole="Talo" />
+        </EntityType>
+        <EntityType Name="Sijainti">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Koodi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Nimi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Osoite" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Talo" Relationship="Self.FK_Talo_Sijainti" FromRole="Sijainti" ToRole="Talo" />
+        </EntityType>
+        <EntityType Name="Talo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SijaintiId" Type="Int32" />
+          <Property Name="ValoId" Type="Int32" />
+          <Property Name="SaunaId" Type="Int32" />
+          <Property Name="Tila" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Lampotila" Type="Int32" />
+          <NavigationProperty Name="Sauna" Relationship="Self.FK_Talo_Sauna" FromRole="Talo" ToRole="Sauna" />
+          <NavigationProperty Name="Sijainti" Relationship="Self.FK_Talo_Sijainti" FromRole="Talo" ToRole="Sijainti" />
+          <NavigationProperty Name="Valo" Relationship="Self.FK_Talo_Valo" FromRole="Talo" ToRole="Valo" />
+        </EntityType>
+        <EntityType Name="Valo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Koodi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Tyyppi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Tila" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Valonmaara" Type="Int32" />
+          <NavigationProperty Name="Talo" Relationship="Self.FK_Talo_Valo" FromRole="Valo" ToRole="Talo" />
+        </EntityType>
+        <Association Name="FK_Talo_Sauna">
+          <End Role="Sauna" Type="Self.Sauna" Multiplicity="0..1" />
+          <End Role="Talo" Type="Self.Talo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sauna">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Talo">
+              <PropertyRef Name="SaunaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Talo_Sijainti">
+          <End Role="Sijainti" Type="Self.Sijainti" Multiplicity="0..1" />
+          <End Role="Talo" Type="Self.Talo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sijainti">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Talo">
+              <PropertyRef Name="SijaintiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Talo_Valo">
+          <End Role="Valo" Type="Self.Valo" Multiplicity="0..1" />
+          <End Role="Talo" Type="Self.Talo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Valo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Talo">
+              <PropertyRef Name="ValoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SmartHouseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Sauna" EntityType="Self.Sauna" />
+          <EntitySet Name="Sijainti" EntityType="Self.Sijainti" />
+          <EntitySet Name="Talo" EntityType="Self.Talo" />
+          <EntitySet Name="Valo" EntityType="Self.Valo" />
+          <AssociationSet Name="FK_Talo_Sauna" Association="Self.FK_Talo_Sauna">
+            <End Role="Sauna" EntitySet="Sauna" />
+            <End Role="Talo" EntitySet="Talo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Talo_Sijainti" Association="Self.FK_Talo_Sijainti">
+            <End Role="Sijainti" EntitySet="Sijainti" />
+            <End Role="Talo" EntitySet="Talo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Talo_Valo" Association="Self.FK_Talo_Valo">
+            <End Role="Valo" EntitySet="Valo" />
+            <End Role="Talo" EntitySet="Talo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SmartHouseModelStoreContainer" CdmEntityContainer="SmartHouseEntities">
+          <EntitySetMapping Name="Sauna">
+            <EntityTypeMapping TypeName="SmartHouseModel.Sauna">
+              <MappingFragment StoreEntitySet="Sauna">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Koodi" ColumnName="Koodi" />
+                <ScalarProperty Name="Tyyppi" ColumnName="Tyyppi" />
+                <ScalarProperty Name="Tila" ColumnName="Tila" />
+                <ScalarProperty Name="Lampotila" ColumnName="Lampotila" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sijainti">
+            <EntityTypeMapping TypeName="SmartHouseModel.Sijainti">
+              <MappingFragment StoreEntitySet="Sijainti">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Koodi" ColumnName="Koodi" />
+                <ScalarProperty Name="Nimi" ColumnName="Nimi" />
+                <ScalarProperty Name="Osoite" ColumnName="Osoite" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Talo">
+            <EntityTypeMapping TypeName="SmartHouseModel.Talo">
+              <MappingFragment StoreEntitySet="Talo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SijaintiId" ColumnName="SijaintiId" />
+                <ScalarProperty Name="ValoId" ColumnName="ValoId" />
+                <ScalarProperty Name="SaunaId" ColumnName="SaunaId" />
+                <ScalarProperty Name="Tila" ColumnName="Tila" />
+                <ScalarProperty Name="Lampotila" ColumnName="Lampotila" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Valo">
+            <EntityTypeMapping TypeName="SmartHouseModel.Valo">
+              <MappingFragment StoreEntitySet="Valo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Koodi" ColumnName="Koodi" />
+                <ScalarProperty Name="Tyyppi" ColumnName="Tyyppi" />
+                <ScalarProperty Name="Tila" ColumnName="Tila" />
+                <ScalarProperty Name="Valonmaara" ColumnName="Valonmaara" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
