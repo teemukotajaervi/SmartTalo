@@ -1,5 +1,4 @@
-﻿using SmartTalo.Utilities;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using SmartTalo.Models;
 using System;
 using System.Collections.Generic;
@@ -7,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SmartTalo.Database;
+using AssetManagementWeb.Utilities;
 
 namespace SmartTalo.Controllers
 {
@@ -14,6 +14,10 @@ namespace SmartTalo.Controllers
     {
         // GET: Valo
         public ActionResult Index()
+        {
+            return View();
+        }
+        public ActionResult Test()
         {
             return View();
         }

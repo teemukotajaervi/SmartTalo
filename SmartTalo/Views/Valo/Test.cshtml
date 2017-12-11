@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Test";
+}
+@section scripts {   
+<script src="~/Scripts/Application/Logic.js"></script>
+
+    <script>
+    $(function () {
+        initValoAsetus();
+    })
+</script>
+     }
+<h2>Test Json Interface</h2>
+
+<p>
+   <input id="SijaintiKoodi" code="text" placeholder="sijainti koodi"/>
+</p>
+<p>    
+   <input id="ValoKoodi" code="text" placeholder="valo koodi" />
+</p>
+
+<button id="AsetaButton">
+    Aseta
+</button>
+
