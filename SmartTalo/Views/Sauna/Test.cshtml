@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Test";
+}
+@section scripts {
+    <script src="~/Scripts/Application/Logic2.js"></script>
+
+    <script>
+    $(function () {
+        initSaunaAsetus();
+    })
+    </script>
+}
+<h2>Test Json Interface</h2>
+
+<p>
+    <input id="SijaintiKoodi2" code="text" placeholder="sijainti koodi" />
+</p>
+<p>
+    <input id="SaunaKoodi" code="text" placeholder="sauna koodi" />
+</p>
+
+<button id="AsetaSaunaButton">
+    Aseta
+</button>
