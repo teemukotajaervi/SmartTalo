@@ -210,6 +210,8 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Controllers\SaunanLuontiController.cs" />
+    <Compile Include="Models\SaunanLuontiModel.cs" />
     <Compile Include="Models\SaunaTaloonModel.cs" />
     <Compile Include="Models\ValonLuontiModel.cs" />
     <Compile Include="Models\ValoTaloonModel.cs" />
@@ -293,6 +295,7 @@
     <Content Include="Views\Valo\Test.cshtml" />
     <Content Include="Views\Sauna\Test.cshtml" />
     <Content Include="Views\ValonLuonti\Test.cshtml" />
+    <Content Include="Views\SaunanLuonti\Test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -314,6 +317,7 @@
     <TypeScriptCompile Include="Scripts\Application\Logic.ts" />
     <TypeScriptCompile Include="Scripts\Application\Logic2.ts" />
     <TypeScriptCompile Include="Scripts\Application\Logic3.ts" />
+    <TypeScriptCompile Include="Scripts\Application\Logic4.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
   </ItemGroup>
   <PropertyGroup>

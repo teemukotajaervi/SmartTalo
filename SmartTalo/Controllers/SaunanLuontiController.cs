@@ -1,18 +1,17 @@
 ﻿using AssetManagementWeb.Utilities;
 using Newtonsoft.Json;
 using SmartTalo.Database;
-using SmartTalo.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace SmartTalo.Controllers
+namespace SmartTalo.Models
 {
-    public class ValonLuontiController : Controller
+    public class SaunanLuontiController : Controller
     {
-        // GET: ValonLuonti
+        // GET: SaunanLuonti
         public ActionResult Index()
         {
             return View();
@@ -22,52 +21,48 @@ namespace SmartTalo.Controllers
             return View();
         }
 
-        // GET: ValonLuonti/Details/5
+        // GET: SaunanLuonti/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: ValonLuonti/Create
+        // GET: SaunanLuonti/Create
         public ActionResult Create()
         {
             return View();
         }
         [HttpPost]
-        
-        public JsonResult ValonLuonti()
+        public JsonResult SaunanLuonti()
         {
             string json = Request.InputStream.ReadToEnd();
-            ValonLuontiModel inputData = JsonConvert.DeserializeObject<ValonLuontiModel>(json);
+            SaunanLuontiModel inputData = JsonConvert.DeserializeObject<SaunanLuontiModel>(json);
             bool success = false;
             string error = "";
 
             SmartHouseEntities entities = new SmartHouseEntities();
             try
             {
-                //haetaan sijainti id koodin perusteella.
+              
                 string koodi = inputData.Koodi;
-
-                //haetaan sijainti id koodin perusteella.
+              
                 string tyyppi = inputData.Tyyppi;
 
                 string tila = inputData.Tila;
 
-                int valonmaara = inputData.Valonmaara;
-                            
+                int lampotila = inputData.Lampotila;
+
 
                 {
                     //( tallennetaan uusi rivi kantaan
 
-                    Valo newEntry = new Valo();
+                    Sauna newEntry = new Sauna();
                     newEntry.Koodi = koodi;
                     newEntry.Tyyppi = tyyppi;
                     newEntry.Tila = tila;
-                    newEntry.Valonmaara = valonmaara;
+                    newEntry.Lampotila = lampotila;
 
-
-
-                    entities.Valo.Add(newEntry);
+                    entities.Sauna.Add(newEntry);
                     entities.SaveChanges();
                     success = true;
                 }
@@ -90,7 +85,7 @@ namespace SmartTalo.Controllers
 
         }
 
-        // POST: ValonLuonti/Create
+        // POST: SaunanLuonti/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -106,13 +101,13 @@ namespace SmartTalo.Controllers
             }
         }
 
-        // GET: ValonLuonti/Edit/5
+        // GET: SaunanLuonti/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: ValonLuonti/Edit/5
+        // POST: SaunanLuonti/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -128,13 +123,13 @@ namespace SmartTalo.Controllers
             }
         }
 
-        // GET: ValonLuonti/Delete/5
+        // GET: SaunanLuonti/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: ValonLuonti/Delete/5
+        // POST: SaunanLuonti/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
