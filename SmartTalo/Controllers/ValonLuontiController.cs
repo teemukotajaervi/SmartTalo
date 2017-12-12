@@ -1,18 +1,18 @@
-﻿using Newtonsoft.Json;
+﻿using AssetManagementWeb.Utilities;
+using Newtonsoft.Json;
+using SmartTalo.Database;
 using SmartTalo.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using SmartTalo.Database;
-using AssetManagementWeb.Utilities;
 
 namespace SmartTalo.Controllers
 {
-    public class ValoController : Controller
+    public class ValonLuontiController : Controller
     {
-        // GET: Valo
+        // GET: ValonLuonti
         public ActionResult Index()
         {
             return View();
@@ -22,49 +22,52 @@ namespace SmartTalo.Controllers
             return View();
         }
 
-        // GET: Valo/Details/5
+        // GET: ValonLuonti/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Valo/Create
+        // GET: ValonLuonti/Create
         public ActionResult Create()
         {
             return View();
         }
-
         [HttpPost]
-        public JsonResult AsetaValoTaloon()
+        
+        public JsonResult ValonLuonti()
         {
             string json = Request.InputStream.ReadToEnd();
-            ValoTaloonModel inputData = JsonConvert.DeserializeObject<ValoTaloonModel>(json);
+            ValonLuontiModel inputData = JsonConvert.DeserializeObject<ValonLuontiModel>(json);
             bool success = false;
             string error = "";
 
-            SmartHouseEntities entities = new SmartHouseEntities(); 
+            SmartHouseEntities entities = new SmartHouseEntities();
             try
             {
                 //haetaan sijainti id koodin perusteella.
-                int sijaintiKoodi = (from s in entities.Sijainti
-                                     where s.Koodi == inputData.SijaintiKoodi
-                                     select s.Id).FirstOrDefault();
+                string koodi = inputData.Koodi;
 
                 //haetaan sijainti id koodin perusteella.
-                int valoKoodi = (from v in entities.Valo
-                                     where v.Koodi == inputData.ValoKoodi
-                                     select v.Id).FirstOrDefault();
-             
-                if ((sijaintiKoodi > 0) && (valoKoodi >0))
+                string tyyppi = inputData.Tyyppi;
+
+                string tila = inputData.Tila;
+
+                int valonmaara = inputData.Valonmaara;
+               
 
                 {
                     //( tallennetaan uusi rivi kantaan
 
-                    Talo newEntry = new Talo();
-                    newEntry.SijaintiId = sijaintiKoodi;
-                    newEntry.ValoId = valoKoodi;                  
-                    newEntry.AsetusPaiva = DateTime.Now;
-                    entities.Talo.Add(newEntry);
+                    Valo newEntry = new Valo();
+                    newEntry.Koodi = koodi;
+                    newEntry.Tyyppi = tyyppi;
+                    newEntry.Tila = tila;
+                    newEntry.Valonmaara = valonmaara;
+
+
+
+                    entities.Valo.Add(newEntry);
                     entities.SaveChanges();
                     success = true;
                 }
@@ -87,7 +90,7 @@ namespace SmartTalo.Controllers
 
         }
 
-        // POST: Valo/Create
+        // POST: ValonLuonti/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -103,13 +106,13 @@ namespace SmartTalo.Controllers
             }
         }
 
-        // GET: Valo/Edit/5
+        // GET: ValonLuonti/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Valo/Edit/5
+        // POST: ValonLuonti/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -125,13 +128,13 @@ namespace SmartTalo.Controllers
             }
         }
 
-        // GET: Valo/Delete/5
+        // GET: ValonLuonti/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Valo/Delete/5
+        // POST: ValonLuonti/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

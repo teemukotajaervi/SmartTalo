@@ -2,7 +2,7 @@
 
     class ValoTaloonModel {
     public SijaintiKoodi: string;
-    public ValoKoodi: string;
+    public ValoKoodi: string;       
     }
 
 function initValoAsetus() {
@@ -10,11 +10,13 @@ function initValoAsetus() {
         
         var sijaintiKoodi: string = $("#SijaintiKoodi").val();
         var valoKoodi: string = $("#ValoKoodi").val();
+               
+        alert("S: " + sijaintiKoodi + ", V: " + valoKoodi);
 
-        alert("S: " + sijaintiKoodi + ", A: " + valoKoodi);
         var data: ValoTaloonModel = new ValoTaloonModel();
         data.SijaintiKoodi = sijaintiKoodi;
-        data.ValoKoodi = valoKoodi;
+        data.ValoKoodi = valoKoodi;        
+      
 
 
         //lähetetään json-muotoista dataa palvelimelle

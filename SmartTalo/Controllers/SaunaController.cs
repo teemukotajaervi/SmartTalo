@@ -62,7 +62,7 @@ namespace SmartTalo.Controllers
                     Talo newEntry = new Talo();
                     newEntry.SijaintiId = sijaintiKoodi;
                     newEntry.SaunaId = saunaKoodi;
-
+                    newEntry.AsetusPaiva = DateTime.Now;
                     entities.Talo.Add(newEntry);
                     entities.SaveChanges();
                     success = true;

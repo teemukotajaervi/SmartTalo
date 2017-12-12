@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SmartHouseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SmartHouseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Sauna">
           <Key>
             <PropertyRef Name="Id" />
@@ -34,6 +34,7 @@
           <Property Name="SaunaId" Type="int" />
           <Property Name="Tila" Type="nvarchar" MaxLength="100" />
           <Property Name="Lampotila" Type="int" />
+          <Property Name="AsetusPaiva" Type="smalldatetime" />
         </EntityType>
         <EntityType Name="Valo">
           <Key>
@@ -99,8 +100,7 @@
             <End Role="Talo" EntitySet="Talo" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SmartHouseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -138,6 +138,7 @@
           <NavigationProperty Name="Sauna" Relationship="Self.FK_Talo_Sauna" FromRole="Talo" ToRole="Sauna" />
           <NavigationProperty Name="Sijainti" Relationship="Self.FK_Talo_Sijainti" FromRole="Talo" ToRole="Sijainti" />
           <NavigationProperty Name="Valo" Relationship="Self.FK_Talo_Valo" FromRole="Talo" ToRole="Valo" />
+          <Property Name="AsetusPaiva" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Valo">
           <Key>
@@ -234,6 +235,7 @@
           <EntitySetMapping Name="Talo">
             <EntityTypeMapping TypeName="SmartHouseModel.Talo">
               <MappingFragment StoreEntitySet="Talo">
+                <ScalarProperty Name="AsetusPaiva" ColumnName="AsetusPaiva" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="SijaintiId" ColumnName="SijaintiId" />
                 <ScalarProperty Name="ValoId" ColumnName="ValoId" />

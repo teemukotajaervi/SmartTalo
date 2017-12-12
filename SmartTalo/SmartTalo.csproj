@@ -176,6 +176,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SaunaController.cs" />
     <Compile Include="Controllers\ValoController.cs" />
+    <Compile Include="Controllers\ValonLuontiController.cs" />
     <Compile Include="Database\Sauna.cs">
       <DependentUpon>ValoModel.tt</DependentUpon>
     </Compile>
@@ -210,6 +211,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SaunaTaloonModel.cs" />
+    <Compile Include="Models\ValonLuontiModel.cs" />
     <Compile Include="Models\ValoTaloonModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -290,9 +292,11 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Valo\Test.cshtml" />
     <Content Include="Views\Sauna\Test.cshtml" />
+    <Content Include="Views\ValonLuonti\Test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Patteri\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -309,6 +313,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\Application\Logic.ts" />
     <TypeScriptCompile Include="Scripts\Application\Logic2.ts" />
+    <TypeScriptCompile Include="Scripts\Application\Logic3.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
   </ItemGroup>
   <PropertyGroup>

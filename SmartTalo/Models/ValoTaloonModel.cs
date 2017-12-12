@@ -8,6 +8,7 @@ namespace SmartTalo.Models
     public class ValoTaloonModel
     {
         public string SijaintiKoodi { get; set; }
-        public string ValoKoodi { get; set; }
+        public string ValoKoodi { get; set; }     
+       
     }
 }
