@@ -32,9 +32,9 @@
           <Property Name="SijaintiId" Type="int" />
           <Property Name="ValoId" Type="int" />
           <Property Name="SaunaId" Type="int" />
-          <Property Name="Tila" Type="nvarchar" MaxLength="100" />
           <Property Name="Lampotila" Type="int" />
           <Property Name="AsetusPaiva" Type="smalldatetime" />
+          <Property Name="TavoiteLampo" Type="int" />
         </EntityType>
         <EntityType Name="Valo">
           <Key>
@@ -133,12 +133,12 @@
           <Property Name="SijaintiId" Type="Int32" />
           <Property Name="ValoId" Type="Int32" />
           <Property Name="SaunaId" Type="Int32" />
-          <Property Name="Tila" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Lampotila" Type="Int32" />
           <NavigationProperty Name="Sauna" Relationship="Self.FK_Talo_Sauna" FromRole="Talo" ToRole="Sauna" />
           <NavigationProperty Name="Sijainti" Relationship="Self.FK_Talo_Sijainti" FromRole="Talo" ToRole="Sijainti" />
           <NavigationProperty Name="Valo" Relationship="Self.FK_Talo_Valo" FromRole="Talo" ToRole="Valo" />
           <Property Name="AsetusPaiva" Type="DateTime" Precision="0" />
+          <Property Name="TavoiteLampo" Type="Int32" />
         </EntityType>
         <EntityType Name="Valo">
           <Key>
@@ -235,12 +235,12 @@
           <EntitySetMapping Name="Talo">
             <EntityTypeMapping TypeName="SmartHouseModel.Talo">
               <MappingFragment StoreEntitySet="Talo">
+                <ScalarProperty Name="TavoiteLampo" ColumnName="TavoiteLampo" />
                 <ScalarProperty Name="AsetusPaiva" ColumnName="AsetusPaiva" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="SijaintiId" ColumnName="SijaintiId" />
                 <ScalarProperty Name="ValoId" ColumnName="ValoId" />
                 <ScalarProperty Name="SaunaId" ColumnName="SaunaId" />
-                <ScalarProperty Name="Tila" ColumnName="Tila" />
                 <ScalarProperty Name="Lampotila" ColumnName="Lampotila" />
               </MappingFragment>
             </EntityTypeMapping>

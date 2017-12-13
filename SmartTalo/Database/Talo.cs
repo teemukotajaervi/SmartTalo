@@ -18,9 +18,9 @@ namespace SmartTalo.Database
         public Nullable<int> SijaintiId { get; set; }
         public Nullable<int> ValoId { get; set; }
         public Nullable<int> SaunaId { get; set; }
-        public string Tila { get; set; }
         public Nullable<int> Lampotila { get; set; }
         public Nullable<System.DateTime> AsetusPaiva { get; set; }
+        public Nullable<int> TavoiteLampo { get; set; }
     
         public virtual Sauna Sauna { get; set; }
         public virtual Sijainti Sijainti { get; set; }

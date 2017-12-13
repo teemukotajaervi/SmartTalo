@@ -21,6 +21,19 @@ namespace SmartTalo.Controllers
         {
             return View();
         }
+        public ActionResult List()
+        {
+            SmartHouseEntities entities = new SmartHouseEntities();
+            try
+            {
+                List<Sijainti> model = entities.Sijainti.ToList();
+                return View(model);
+            }
+            finally
+            {
+                entities.Dispose();
+            }        
+        }
         // GET: SijainninLuonti/Details/5
         public ActionResult Details(int id)
         {

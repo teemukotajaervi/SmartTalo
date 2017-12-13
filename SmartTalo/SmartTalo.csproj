@@ -303,6 +303,7 @@
     <Content Include="Views\SijainninLuonti\Sijainti.cshtml" />
     <Content Include="Views\Sauna\List.cshtml" />
     <Content Include="Views\Valo\List.cshtml" />
+    <Content Include="Views\SijainninLuonti\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
