@@ -4,13 +4,17 @@
 }
 @section scripts {
     <script src="~/Scripts/Application/Logic5.js"></script>
-
+ 
     <script>
     $(function () {
         initSijainninLuonti();
     })
+    $('#AsetaButton5').click(function () {
+        window.location.href = 'http://localhost:1865/SijainninLuonti/List';
+    })
     </script>
 }
+
 <h2>Sijainti</h2>
 
 <p>
@@ -26,7 +30,7 @@
 <p>
     <input id="NykyLampotila" code="text" placeholder="NykyLampotila" />
 </p>
-<button id="AsetaButton5" class="btn btn-primary">
+<button  id="AsetaButton5" class="btn btn-primary">
     Aseta
 </button>
 

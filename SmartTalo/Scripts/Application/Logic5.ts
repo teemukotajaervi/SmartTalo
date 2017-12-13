@@ -41,7 +41,7 @@ function initSijainninLuonti() {
                 }
                 else {
                     alert("There was an error: " + data.error);
-                }
+                } 
             },
             dataType: "json"
         });

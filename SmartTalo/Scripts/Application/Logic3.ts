@@ -16,7 +16,7 @@ function initValonLuonti() {
         var tila: string = $("#Tila").val();
         var valonmaara: number = $("#Valonmaara").val();
 
-        alert("k: " + koodi + ", t: " + tyyppi + "ti: " + tila + "V: " + valonmaara);
+        alert("koodi: " + koodi + ", tyyppi: " + tyyppi + ", tila: " + tila + ", valonmaara: " + valonmaara);
 
         var data: ValonLuontiModel = new ValonLuontiModel();
         data.Koodi = koodi;

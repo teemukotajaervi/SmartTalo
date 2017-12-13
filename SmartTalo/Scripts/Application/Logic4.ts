@@ -16,7 +16,7 @@ function initSaunanLuonti() {
         var tila: string = $("#Tila").val();
         var lampotila: number = $("#Lampotila").val();
 
-        alert("k: " + koodi + ", t: " + tyyppi + "ti: " + tila + "V: " + lampotila);
+        alert("koodi: " + koodi + ", tyyppi: " + tyyppi + ", tila: " + tila + ", lampotila: " + lampotila);
 
         var data: SaunanLuontiModel = new SaunanLuontiModel();
         data.Koodi = koodi;

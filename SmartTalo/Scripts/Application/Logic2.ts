@@ -9,7 +9,7 @@ function initSaunaAsetus() {
         var sijaintiKoodi: string = $("#SijaintiKoodi2").val();
         var saunaKoodi: string = $("#SaunaKoodi").val();
 
-        alert("S: " + sijaintiKoodi + ", A: " + saunaKoodi);
+        alert("Sijainti: " + sijaintiKoodi + ", Sauna: " + saunaKoodi);
         var data: SaunaTaloonModel = new SaunaTaloonModel();
         data.SijaintiKoodi = sijaintiKoodi;
         data.SaunaKoodi = saunaKoodi;
