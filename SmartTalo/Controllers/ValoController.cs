@@ -17,6 +17,34 @@ namespace SmartTalo.Controllers
         {
             return View();
         }
+        public ActionResult ListJson()
+        {
+            SmartHouseEntities entities = new SmartHouseEntities();
+            List<ValoViewModel> model = new List<ValoViewModel>();
+
+            try
+            {
+                List<Valo> valot = entities.Valo.ToList();
+                //muodostetaan näkymämalli tietokannan rivien pohjalta.
+
+                foreach (Valo valo in valot)
+                {
+                    ValoViewModel view = new ValoViewModel();
+                    view.Id = valo.Id;
+                    view.Koodi = valo.Koodi;
+                    view.Tyyppi = valo.Tyyppi;
+                    view.Tila = valo.Tila;
+                    view.Valonmaara = valo.Valonmaara;
+                    model.Add(view);
+                }
+
+            }
+            finally
+            {
+                entities.Dispose();
+            }
+            return Json(model,JsonRequestBehavior.AllowGet);
+        }
         public ActionResult Test()
         {
             return View();

@@ -214,9 +214,11 @@
     <Compile Include="Controllers\SaunanLuontiController.cs" />
     <Compile Include="Models\SaunanLuontiModel.cs" />
     <Compile Include="Models\SaunaTaloonModel.cs" />
+    <Compile Include="Models\SaunaViewModel.cs" />
     <Compile Include="Models\SijainninLuontiModel.cs" />
     <Compile Include="Models\ValonLuontiModel.cs" />
     <Compile Include="Models\ValoTaloonModel.cs" />
+    <Compile Include="Models\ValoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utilities\WebUtilities.cs" />
@@ -299,10 +301,11 @@
     <Content Include="Views\ValonLuonti\Test.cshtml" />
     <Content Include="Views\SaunanLuonti\Test.cshtml" />
     <Content Include="Views\SijainninLuonti\Sijainti.cshtml" />
+    <Content Include="Views\Sauna\List.cshtml" />
+    <Content Include="Views\Valo\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Patteri\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

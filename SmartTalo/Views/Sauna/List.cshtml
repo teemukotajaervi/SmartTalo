@@ -1,0 +1,51 @@
+﻿@model IEnumerable<SmartTalo.Models.SaunaViewModel>
+
+@{
+    ViewBag.Title = "Saunat";
+}
+
+<h2>Saunat</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Koodi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tyyppi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tila)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lampotila)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Koodi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tyyppi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tila)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lampotila)
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>*@
+    </tr>
+}
+
+</table>

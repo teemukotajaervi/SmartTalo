@@ -17,6 +17,34 @@ namespace SmartTalo.Controllers
         {
             return View();
         }
+        public ActionResult List()
+        {
+            SmartHouseEntities entities = new SmartHouseEntities();
+            List<SaunaViewModel> model = new List<SaunaViewModel>();
+
+            try
+            {
+                List<Sauna> saunat = entities.Sauna.ToList();
+                //muodostetaan näkymämalli tietokannan rivien pohjalta.
+
+                foreach (Sauna sauna in saunat)
+                {
+                    SaunaViewModel view = new SaunaViewModel();
+                    view.Id = sauna.Id;
+                    view.Koodi = sauna.Koodi;
+                    view.Tyyppi = sauna.Tyyppi;
+                    view.Tila = sauna.Tila;
+                    view.Lampotila = sauna.Lampotila;
+                    model.Add(view);
+                }
+
+            }
+            finally
+            {
+                entities.Dispose();
+            }
+            return View(model);
+        }
         public ActionResult Test()
         {
             return View();
