@@ -4,6 +4,8 @@ class SijainninLuontiModel {
     public Koodi: string;
     public Nimi: string;
     public Osoite: string;
+    public TavoiteLampotila: number;
+    public NykyLampotila: number;
 }
 
 function initSijainninLuonti() {
@@ -12,15 +14,18 @@ function initSijainninLuonti() {
         var koodi: string = $("#Koodi").val();
         var nimi: string = $("#Nimi").val();
         var osoite: string = $("#Osoite").val();
+        var tavoitelampotila = $("#TavoiteLampotila").val();
+        var nykylampotila = $("#NykyLampotila").val();
         
 
-        alert("koodi: " + koodi + ", nimi: " + nimi + "osoite: " + osoite);
+        alert("koodi: " + koodi + ", nimi: " + nimi + ", osoite: " + osoite + ", tavoitelampotila: " + tavoitelampotila + ", nykylämpötila: " + tavoitelampotila);
 
         var data: SijainninLuontiModel = new SijainninLuontiModel();
         data.Koodi = koodi;
         data.Nimi = nimi;
         data.Osoite = osoite;
-      
+        data.TavoiteLampotila = tavoitelampotila;
+        data.NykyLampotila = nykylampotila;
 
 
 

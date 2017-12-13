@@ -10,6 +10,9 @@ namespace SmartTalo.Models
         public string Koodi { get; set; }
         public string Nimi { get; set; }
         public string Osoite { get; set; }
-        
+        public int TavoiteLampotila { get; set; }
+        public int NykyLampotila { get; set; }
+
+
     }
 }

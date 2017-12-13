@@ -63,13 +63,21 @@ namespace SmartTalo.Controllers
                 string nimi = inputData.Nimi;
 
                 string osoite = inputData.Osoite;
-               
+
+                int tavoitelampotila = inputData.TavoiteLampotila;
+
+                int nykylampotila = inputData.NykyLampotila;
+
+                
+
                 {
                     //( tallennetaan uusi rivi kantaan
                     Sijainti newEntry = new Sijainti();
                     newEntry.Koodi = koodi;
                     newEntry.Nimi = nimi;
                     newEntry.Osoite = osoite;
+                    newEntry.NykyLampotila = nykylampotila;
+                    newEntry.TavoiteLampotila = tavoitelampotila;
                   
                     entities.Sijainti.Add(newEntry);
                     entities.SaveChanges();
