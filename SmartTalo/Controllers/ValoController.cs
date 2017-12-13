@@ -17,7 +17,7 @@ namespace SmartTalo.Controllers
         {
             return View();
         }
-        public ActionResult ListJson()
+        public ActionResult List()
         {
             SmartHouseEntities entities = new SmartHouseEntities();
             List<ValoViewModel> model = new List<ValoViewModel>();
@@ -43,7 +43,7 @@ namespace SmartTalo.Controllers
             {
                 entities.Dispose();
             }
-            return Json(model,JsonRequestBehavior.AllowGet);
+            return View(model);
         }
         public ActionResult Test()
         {
