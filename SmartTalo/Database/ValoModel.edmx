@@ -23,6 +23,8 @@
           <Property Name="Koodi" Type="nvarchar" MaxLength="100" />
           <Property Name="Nimi" Type="nvarchar" MaxLength="200" />
           <Property Name="Osoite" Type="nvarchar" MaxLength="500" />
+          <Property Name="TavoiteLampotila" Type="int" />
+          <Property Name="NykyLampotila" Type="int" />
         </EntityType>
         <EntityType Name="Talo">
           <Key>
@@ -32,9 +34,7 @@
           <Property Name="SijaintiId" Type="int" />
           <Property Name="ValoId" Type="int" />
           <Property Name="SaunaId" Type="int" />
-          <Property Name="Lampotila" Type="int" />
           <Property Name="AsetusPaiva" Type="smalldatetime" />
-          <Property Name="TavoiteLampo" Type="int" />
         </EntityType>
         <EntityType Name="Valo">
           <Key>
@@ -124,6 +124,8 @@
           <Property Name="Nimi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Osoite" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Talo" Relationship="Self.FK_Talo_Sijainti" FromRole="Sijainti" ToRole="Talo" />
+          <Property Name="TavoiteLampotila" Type="Int32" />
+          <Property Name="NykyLampotila" Type="Int32" />
         </EntityType>
         <EntityType Name="Talo">
           <Key>
@@ -133,12 +135,10 @@
           <Property Name="SijaintiId" Type="Int32" />
           <Property Name="ValoId" Type="Int32" />
           <Property Name="SaunaId" Type="Int32" />
-          <Property Name="Lampotila" Type="Int32" />
           <NavigationProperty Name="Sauna" Relationship="Self.FK_Talo_Sauna" FromRole="Talo" ToRole="Sauna" />
           <NavigationProperty Name="Sijainti" Relationship="Self.FK_Talo_Sijainti" FromRole="Talo" ToRole="Sijainti" />
           <NavigationProperty Name="Valo" Relationship="Self.FK_Talo_Valo" FromRole="Talo" ToRole="Valo" />
           <Property Name="AsetusPaiva" Type="DateTime" Precision="0" />
-          <Property Name="TavoiteLampo" Type="Int32" />
         </EntityType>
         <EntityType Name="Valo">
           <Key>
@@ -225,6 +225,8 @@
           <EntitySetMapping Name="Sijainti">
             <EntityTypeMapping TypeName="SmartHouseModel.Sijainti">
               <MappingFragment StoreEntitySet="Sijainti">
+                <ScalarProperty Name="NykyLampotila" ColumnName="NykyLampotila" />
+                <ScalarProperty Name="TavoiteLampotila" ColumnName="TavoiteLampotila" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Koodi" ColumnName="Koodi" />
                 <ScalarProperty Name="Nimi" ColumnName="Nimi" />
@@ -235,13 +237,11 @@
           <EntitySetMapping Name="Talo">
             <EntityTypeMapping TypeName="SmartHouseModel.Talo">
               <MappingFragment StoreEntitySet="Talo">
-                <ScalarProperty Name="TavoiteLampo" ColumnName="TavoiteLampo" />
                 <ScalarProperty Name="AsetusPaiva" ColumnName="AsetusPaiva" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="SijaintiId" ColumnName="SijaintiId" />
                 <ScalarProperty Name="ValoId" ColumnName="ValoId" />
                 <ScalarProperty Name="SaunaId" ColumnName="SaunaId" />
-                <ScalarProperty Name="Lampotila" ColumnName="Lampotila" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

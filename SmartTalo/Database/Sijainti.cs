@@ -24,6 +24,8 @@ namespace SmartTalo.Database
         public string Koodi { get; set; }
         public string Nimi { get; set; }
         public string Osoite { get; set; }
+        public Nullable<int> TavoiteLampotila { get; set; }
+        public Nullable<int> NykyLampotila { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Talo> Talo { get; set; }
