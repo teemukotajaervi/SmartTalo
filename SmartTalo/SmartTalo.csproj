@@ -175,6 +175,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SaunaController.cs" />
+    <Compile Include="Controllers\SijainninLuontiController.cs" />
     <Compile Include="Controllers\ValoController.cs" />
     <Compile Include="Controllers\ValonLuontiController.cs" />
     <Compile Include="Database\Sauna.cs">
@@ -213,6 +214,7 @@
     <Compile Include="Controllers\SaunanLuontiController.cs" />
     <Compile Include="Models\SaunanLuontiModel.cs" />
     <Compile Include="Models\SaunaTaloonModel.cs" />
+    <Compile Include="Models\SijainninLuontiModel.cs" />
     <Compile Include="Models\ValonLuontiModel.cs" />
     <Compile Include="Models\ValoTaloonModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -296,6 +298,7 @@
     <Content Include="Views\Sauna\Test.cshtml" />
     <Content Include="Views\ValonLuonti\Test.cshtml" />
     <Content Include="Views\SaunanLuonti\Test.cshtml" />
+    <Content Include="Views\SijainninLuonti\Sijainti.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -318,6 +321,7 @@
     <TypeScriptCompile Include="Scripts\Application\Logic2.ts" />
     <TypeScriptCompile Include="Scripts\Application\Logic3.ts" />
     <TypeScriptCompile Include="Scripts\Application\Logic4.ts" />
+    <TypeScriptCompile Include="Scripts\Application\Logic5.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
   </ItemGroup>
   <PropertyGroup>
